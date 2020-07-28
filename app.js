@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
-            alert('BIEN!')
+            // alert('BIEN!')
             cardsWon.push(cardsChosen)
         } else {
             animateCSS(cards[optionOneId], 'flipOutY')
@@ -128,8 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         attempts++
         resultDisplay.textContent = attempts
         if (cardsWon.length === cardArray.length/2) {
-            resultDisplay.textContent = `Lo resolviste en ${attempts} intentos, ¡Felicitaciones!` 
-
+            document.querySelector('.title').innerHTML = `<span class="pr-4">;)</span>Terminaste`
         }
     }
 
@@ -151,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function restartGame() {
         grid.querySelectorAll('*').forEach(n => n.remove())
         resultDisplay.textContent = 0
+        document.querySelector('.title').innerHTML = `<span class="pr-4">:)</span>MEMORY`
         cardsWon = []
         cardArray.sort(() => 0.5 - Math.random()) 
         createBoard()
